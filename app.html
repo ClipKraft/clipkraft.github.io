@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d14">
+<meta name="description" content="">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="canonical" href="https://clipkraft.github.io/app.html">
+<link rel="stylesheet" href="css/style.css?v=1.3.4">
+<title>Studio</title>
+</head>
+<body class="editor" data-title-suffix="Studio">
+<div class="toast-host" id="toasts"></div>
+
+<header class="topbar">
+  <button class="btn icon ghost" id="btnProjects" title="Your projects" aria-label="Your projects">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+  <a class="logo" href="./" title="Home"><span class="logo-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 8.5v15l12.5-7.5z" fill="#fff"/><path d="M9 23.5L23.5 9" stroke="#0b0d14" stroke-width="2.2" stroke-linecap="round" opacity=".55"/></svg></span><span data-wordmark class="brand-name-top"></span></a>
+  <div class="proj-name"><input id="projName" type="text" value="Untitled video" aria-label="Project name"><span class="save-state" id="saveState">Saved</span></div>
+  <div class="acct">
+    <span class="dot" id="acctDot"></span><span class="who" id="acctWho">Not signed in</span>
+    <button class="btn sm" id="btnSignIn">Sign in</button>
+  </div>
+</header>
+
+<div class="modebar" id="modeBar">
+  <span class="mb-label">Mode</span>
+  <div class="seg mode-seg" id="modeSeg" role="group" aria-label="Free mode or AI mode">
+    <button data-v="free">Free mode</button><button data-v="ai">✨ AI mode</button>
+  </div>
+  <span class="mb-hint" id="modeHint"></span>
+</div>
+<div class="credits-banner" id="creditsBanner" role="alert" hidden></div>
+
+<nav class="stepper" id="stepper">
+  <button data-step="0"><span class="n">1</span>Topic</button>
+  <button data-step="1"><span class="n">2</span>Script</button>
+  <button data-step="2"><span class="n">3</span>Visuals</button>
+  <button data-step="3"><span class="n">4</span>Voice</button>
+  <button data-step="4"><span class="n">5</span>Edit &amp; Export</button>
+</nav>
+
+<main class="workspace">
+  <section class="pane" id="pane"></section>
+  <aside class="preview-pane" id="previewPane">
+    <div class="row mobile-only" style="justify-content:space-between;align-items:center">
+      <b>Preview</b><button class="btn sm" id="btnBackEdit">Back to editing</button>
+    </div>
+    <div class="player" id="player">
+      <canvas id="previewCanvas" width="960" height="540"></canvas>
+      <div class="empty" id="playerEmpty">Your video preview appears here once you have a script.</div>
+    </div>
+    <div class="transport">
+      <button class="btn icon primary" id="btnPlay" aria-label="Play">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l12-7.5z"/></svg>
+      </button>
+      <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Seek">
+      <span class="time" id="timeLbl">0:00 / 0:00</span>
+    </div>
+    <div class="timeline" id="timeline"></div>
+    <div class="hint" id="tlHint">Auto-edit: each scene is timed to its voiceover. Tap a clip to jump to it.</div>
+  </aside>
+</main>
+
+<div class="footer-bar" id="footerBar">
+  <button class="btn" id="btnMobilePrev" style="flex:0 0 auto">Back</button>
+  <button class="btn" id="btnMobilePreview" style="flex:1">▶ Preview</button>
+  <button class="btn primary" id="btnMobileNext" style="flex:1">Next</button>
+</div>
+
+<div class="drawer-bg" id="drawerBg"></div>
+<aside class="drawer" id="drawer" aria-label="Projects">
+  <header><b>Your projects</b><button class="btn sm primary" id="btnNewProject">+ New</button></header>
+  <div class="list" id="projList"></div>
+  <div class="hint" style="padding:12px 14px calc(12px + var(--safe-b));border-top:1px solid var(--line)">Projects are saved in this browser automatically.<br><a data-platform-link target="_blank" rel="noopener" style="color:var(--muted)"></a></div>
+</aside>
+
+<div class="modal-bg" id="modalBg"><div class="modal" id="modal"></div></div>
+
+<input type="file" id="filePicker" hidden>
+<script src="https://js.puter.com/v2/"></script>
+<script type="module" src="js/app.js?v=1.3.4"></script>
+</body>
+</html>
